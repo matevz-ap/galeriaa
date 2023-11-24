@@ -3,3 +3,4 @@ django-environ
 psycopg
 whitenoise
 whitenoise[brotli]
+django-allauth
