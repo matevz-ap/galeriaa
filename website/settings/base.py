@@ -138,6 +138,9 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+SOCIALACCOUNT_STORE_TOKENS = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
 # URLs
 # https://docs.djangoproject.com/en/4.2/ref/settings/#urls
 

@@ -1,0 +1,14 @@
+{% extends "account/base_entrance.html" %}
+{% load allauth i18n socialaccount %}
+{% block head_title %}
+    {% trans "Signup" %}
+{% endblock head_title %}
+{% block content %}
+    {% element h1 %}
+        {% trans "Sign Up" %}
+    {% endelement %}
+    <p>
+        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+    </p>
+    <a href="{% provider_login_url "google" next="/success/url/" %}" class="btn btn-light">Google</a>
+{% endblock content %}
