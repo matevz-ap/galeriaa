@@ -1,0 +1,2 @@
+{# Uses HTMX to reload an element every second that displays the current date and time using a Django tag #}
+<small class="text-body-tertiary" hx-get="now" hx-swap="outerHTML" hx-trigger="every 1s">{% now 'r' %}</small>

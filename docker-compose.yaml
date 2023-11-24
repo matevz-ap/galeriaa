@@ -1,0 +1,36 @@
+services:
+
+  local:
+    build:
+      target: local
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres/database
+      DJANGO_SUPERUSER_EMAIL: local@email.com
+      DJANGO_SUPERUSER_PASSWORD: password
+      DJANGO_SUPERUSER_USERNAME: local
+    ports:
+      - 8000:8000
+    volumes:
+      - ./static:/railway/static
+      - ./templates:/railway/templates
+      - ./website:/railway/website
+
+  postgres:
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+    healthcheck:
+      interval: 5s
+      retries: 3
+      test: pg_isready --dbname=$${POSTGRES_DB} --username=$${POSTGRES_USER}
+      timeout: 15s
+    image: postgres:latest
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
