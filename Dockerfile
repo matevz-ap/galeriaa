@@ -1,4 +1,4 @@
-FROM python:latest as base
+FROM python:3.10.12 as base
 
 ARG PYTHONDONTWRITEBYTECODE=1
 ARG PYTHONUNBUFFERED=1
