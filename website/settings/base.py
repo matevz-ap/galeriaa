@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     # Apps
-    "galleries",
+    "galleries.apps.GalleriesConfig",
 ]
 
 # File Uploads
@@ -142,6 +142,20 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIALACCOUNT_STORE_TOKENS = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+            'openid',
+            'https://www.googleapis.com/auth/drive.readonly'
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'offline',
+        },
+    }
+}
 
 # URLs
 # https://docs.djangoproject.com/en/4.2/ref/settings/#urls

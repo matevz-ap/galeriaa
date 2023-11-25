@@ -1,0 +1,6 @@
+<div class="gallery">
+    {% for file in files %}
+        <img src="https://drive.google.com/uc?id={{ file.id }}" class="gallery-image" 
+            alt="" style="height: 200px">
+    {% endfor %}
+</div>

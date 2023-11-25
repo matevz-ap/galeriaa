@@ -17,6 +17,7 @@ services:
       - ./static:/railway/static
       - ./templates:/railway/templates
       - ./website:/railway/website
+      - ./galleries:/railway/galleries
 
   postgres:
     environment:
