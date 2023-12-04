@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="gallery">
-    {{ object.data }}
-    {% for file in files %}
+    {% for file in object.data %}
         <img src="https://drive.google.com/uc?id={{ file.id }}" class="gallery-image" 
             alt="" style="height: 200px">
     {% endfor %}

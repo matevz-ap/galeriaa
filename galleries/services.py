@@ -53,7 +53,7 @@ def update_gallery_data(gallery):
     #     if file["mimeType"] == "application/vnd.google-apps.folder":
     #         f = get_files_from_folder(gallery.user_id, file["id"])
     #         file["images"] = f
-    gallery.data = {"data": files}
+    gallery.data = files
     gallery.save(update_fields=("data",))
 
 
