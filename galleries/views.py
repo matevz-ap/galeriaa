@@ -1,3 +1,4 @@
+from typing import Any
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
 from django.http import HttpResponse, JsonResponse
@@ -5,17 +6,23 @@ from django.views.generic import CreateView
 
 from . import models
 from . import services
+from . import forms
 
 
 class GalleryCreateView(CreateView):
     model = models.Gallery
-    fields = ["user", "folder"]
+    form_class = forms.GalleryForm
 
     def get_initial(self):
         return {"user": self.request.user}
 
+    def get_form_kwargs(self) -> dict[str, Any]:
+        kwargs = super().get_form_kwargs()
+        kwargs["user_id"] = self.request.user.id
+        return kwargs
+
     def get_success_url(self) -> str:
-        return reverse_lazy("gallery", kwargs={"pk": self.object.pk})
+        return reverse_lazy("galleries:gallery", kwargs={"pk": self.object.pk})
 
 
 class GalleryView(DetailView):

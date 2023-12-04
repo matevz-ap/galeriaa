@@ -3,10 +3,9 @@
 {% block title %}New Gallery{% endblock %}
 {% block content %}
 <div class="container mt-5 d-flex justify-content-center">
-    <div class="border rounded-4 p-4" style="max-width: 600px; min-width: 400px">
-        <form method="post">{% csrf_token %}
+    <div class="border rounded-4 p-4" style="max-width: 500px; min-width: 400px">
+        <form method="post">
             {% crispy form%}
-            <input type="submit" value="Save" class="btn btn-primary w-100">
         </form>
     </div>
 </div>
