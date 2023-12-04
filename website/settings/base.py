@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    "crispy_forms",
+    "crispy_bootstrap5",
     # Apps
     "galleries.apps.GalleriesConfig",
 ]
@@ -161,3 +163,6 @@ SOCIALACCOUNT_PROVIDERS = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#urls
 
 ROOT_URLCONF = "website.urls"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
