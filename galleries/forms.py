@@ -12,7 +12,7 @@ from . import utils
 
 
 class GalleryForm(forms.ModelForm):
-    folder = forms.ChoiceField()
+    folder = forms.ChoiceField(widget=forms.Select(attrs={'id': 'folder-autocomplete', "autocomplete": 'off'}))
 
     class Meta:
         model = models.Gallery

@@ -28,6 +28,9 @@
     <script src="https://unpkg.com/htmx.org@1.9.7"
             integrity="sha384-EAzY246d6BpbWR7sQ8+WEm40J8c3dHFsqC58IgPlh4kMbRRI6P6WA+LA/qGAyAu8" crossorigin="anonymous"
     ></script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
+    {% block css%}
+    {% endblock css %}
 </head>
 <body>
 <main class="vh-100" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
@@ -37,5 +40,11 @@
 <!-- Bootstrap JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"
         integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+<script>
+    new TomSelect("#folder-autocomplete",{});
+</script>
+{% endblock js %}
 </body>
 </html>
