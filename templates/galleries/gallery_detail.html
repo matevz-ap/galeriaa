@@ -1,10 +1,13 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base-nav.html" %}
+{% block content-main %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Gallery</h1>
+    <a hx-get="{% url "galleries:gallery_refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
+</div>
 <div class="gallery">
     {% for file in object.data %}
         <img src="https://drive.google.com/uc?id={{ file.id }}" class="gallery-image" 
             alt="" style="height: 200px">
     {% endfor %}
-    <a hx-get="{% url "galleries:gallery_refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
 </div>
-{% endblock content %}
+{% endblock content-main %}
