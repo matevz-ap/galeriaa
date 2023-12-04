@@ -1,58 +1,78 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- Title -->
-    <title>Railway</title>
-    <!-- Favicon -->
-    <!-- https://favicon.io -->
-    {% load static %}
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}"/>
-    <link rel="icon" href="{% static 'favicon/favicon.ico' %}"/>
-    <link rel="icon" sizes="16x16 32x32" href="{% static 'favicon/favicon-16x16.png' %}"/>
-    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}"/>
-    <!-- Bootstrap CSS & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css"
-          integrity="sha256-MBffSnbbXwHCuZtgPYiwMQbfE7z+GOZ7fBPCNB06Z98=" crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.min.css"
-          integrity="sha256-6MNujrdbV0Z7S927PzUMXOmMLwkKdsdD7XIl/w89HMQ=" crossorigin="anonymous"
-    />
-    <!-- HTMX -->
-    <!-- https://htmx.org/docs/ -->
-    <script src="https://unpkg.com/htmx.org@1.9.7"
-            integrity="sha384-EAzY246d6BpbWR7sQ8+WEm40J8c3dHFsqC58IgPlh4kMbRRI6P6WA+LA/qGAyAu8" crossorigin="anonymous"
-    ></script>
-</head>
-<body class="bg-secondary">
-<main class="align-items-center bg-gradient d-flex justify-content-center vh-100">
-    <div class="card m-4 text-center">
-        <div class="ratio ratio-16x9 rounded">
-            <img alt="A moving subway" class="card-img-top d-none" id="subway" src="{% static 'image/subway.gif' %}">
-            <div class="bg-secondary placeholder placeholder-wave rounded-top" id="subway-placeholder"></div>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Congratulations</h5>
-            <p class="card-text text-secondary">My first project using <span>Django and Railway</span>!</p>
-            <a class="card-link" href="https://docs.djangoproject.com/en/dev/" target="_blank">Django</a>
-            <a class="card-link" href="https://docs.railway.app/" target="_blank">Railway</a>
-        </div>
-        <div class="card-footer">
-            {% include "now.html" %}
+{% extends "base.html" %}
+{% block content %}
+<nav class="navbar navbar-expand-lg border-bottom">
+    <div class="container">
+        <a class="navbar-brand text-primary" href="#" style="font-family: 'Pacifico', cursive;">Galeria</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <a class="btn btn-primary rounded-pill ms-2 my-auto py-1" 
+                        href="/accounts/login/">Login</a>
+                </li>
+            </ul>
         </div>
     </div>
-</main>
-<!-- Bootstrap JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"
-        integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
-<script>
-    let subwayImage = document.getElementById("subway");
-    subwayImage.onload = (_) => {
-        let subwayPlaceholder = document.getElementById("subway-placeholder");
-        subwayImage.classList.remove("d-none");
-        subwayPlaceholder.remove();
-    };
-</script>
-</body>
-</html>
+</nav>
+<div class="container p-5">
+    <h1 class="mb-3 fw-bold">Use google drive to embed images</h1>
+    <p class="text-secondary mb-5">You store your images on your drive. Why not also use it to display images on your website? 
+        Avoid using third party storage to display your images.
+    </p>
+    <div class="row mb-5">
+        <div class="col-4 h-100">
+            <div class="bg-light rounded-3 p-4 h-100">
+                <h4>Streamlined Connectivity</h4>
+                Connect your Google Drive account in just a few clicks. Effortlessly link your account to our platform for instant access to your image folders.
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="bg-light rounded-3 p-4">
+                <h4>Efficient Embedding</h4>
+                Showcase your visuals with ease. Our platform allows you to embed images directly from your Google Drive folders, providing a hassle-free way to display your content.
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="bg-light rounded-3 p-4 h-100">
+                <h4>Organize and Display</h4>
+                Organize your images in Google Drive, and let our platform handle the rest. Efficiently display your visual content in a way that suits your needs.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="https://logodownload.org/wp-content/uploads/2020/04/google-drive-logo-0-1.png" height="80">
+            <h4>Connect Your Google Drive</h4>
+            <p>Sign in and effortlessly connect your Google Drive account to our platform.</p>
+        </div>
+    
+        <div class="col-md-4">
+            <img src="https://cdn.icon-icons.com/icons2/2963/PNG/512/macos_big_sur_folder_icon_186046.png" height="80"
+                class="p-2">
+            <h4>Select A Folder</h4>
+            <p>Choose the specific folder from your Google Drive containing the images you want to embed.</p>
+        </div>
+    
+        <div class="col-md-4">
+            <i class="bi bi-image-fill" style="font-size: 50px"></i>
+            <h4>Embed with Ease</h4>
+            <p>Our intuitive interface lets you embed images seamlessly. Simply select the images you want to display and let our platform take care of the rest.</p>
+        </div>
+    </div>
+    
+    <div>
+        Unlock the potential of your visual content with Galeria. Sign up now to experience a new level of convenience in managing and showcasing your images. Elevate your presentation with the power of seamless Google Drive integration.
+    </div>
+
+</div>
+{% endblock content %}
