@@ -2,6 +2,9 @@ from galleries.services import get_drive_folders
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+from crispy_forms.layout import Field
+from crispy_forms.layout import Hidden
+from crispy_forms.layout import Layout
 from . import models
 from . import utils
 
@@ -19,4 +22,8 @@ class GalleryForm(forms.ModelForm):
         self.helper = FormHelper()
         folders = get_drive_folders(user_id)
         self.fields['folder'].choices = utils.folders_to_choices(folders)
-        self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper.layout = Layout(
+            Hidden("user", user_id),
+            Field('folder'),
+            Submit('submit', 'Submit', css_class='w-100')
+        )

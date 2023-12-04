@@ -1,7 +1,8 @@
 {% extends "base-nav.html" %}
 {% block content-main %}
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="d-flex align-items-center mb-3">
     <h1>Gallery</h1>
+    <a href="{% url "galleries:list" %}" class="btn btn-outline-secondary ms-auto me-2">Back</a>
     <a hx-get="{% url "galleries:gallery_refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
 </div>
 <div class="gallery">

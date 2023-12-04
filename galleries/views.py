@@ -1,5 +1,7 @@
 from typing import Any
+from django.db.models.query import QuerySet
 from django.views.generic.detail import DetailView
+from django.views.generic import ListView
 from django.urls import reverse_lazy
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import CreateView
@@ -13,16 +15,13 @@ class GalleryCreateView(CreateView):
     model = models.Gallery
     form_class = forms.GalleryForm
 
-    def get_initial(self):
-        return {"user": self.request.user}
-
     def get_form_kwargs(self) -> dict[str, Any]:
         kwargs = super().get_form_kwargs()
         kwargs["user_id"] = self.request.user.id
         return kwargs
 
     def get_success_url(self) -> str:
-        return reverse_lazy("galleries:gallery", kwargs={"pk": self.object.pk})
+        return reverse_lazy("galleries:detail", kwargs={"pk": self.object.pk})
 
 
 class GalleryView(DetailView):
@@ -31,6 +30,13 @@ class GalleryView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+
+class GalleryListView(ListView):
+    model = models.Gallery
+
+    def get_queryset(self) -> QuerySet[Any]:
+        return super().get_queryset().filter(user=self.request.user)
 
 
 def gallery_api(request, pk):
