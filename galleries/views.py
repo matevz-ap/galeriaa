@@ -5,6 +5,7 @@ from django.views.generic import ListView
 from django.urls import reverse_lazy
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import CreateView
+from django.views.decorators.http import require_http_methods
 
 from . import models
 from . import services
@@ -48,3 +49,10 @@ def refresh_gallery(request, pk):
     gallery = models.Gallery.objects.get(pk=pk)
     services.update_gallery_data(gallery)
     return HttpResponse("OK")
+
+
+@require_http_methods(["DELETE"])
+def delete_gallery(request, pk):
+    gallery = models.Gallery.objects.get(pk=pk)
+    gallery.delete()
+    return HttpResponse("OK", headers={"HX-Redirect": reverse_lazy("galleries:list")})

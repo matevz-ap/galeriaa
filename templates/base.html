@@ -30,7 +30,7 @@
     ></script>
 </head>
 <body>
-<main class="vh-100">
+<main class="vh-100" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {% block content %}
     {% endblock content %}
 </main>

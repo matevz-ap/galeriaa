@@ -3,7 +3,9 @@
 <div class="d-flex align-items-center mb-3">
     <h1>Gallery</h1>
     <a href="{% url "galleries:list" %}" class="btn btn-outline-secondary ms-auto me-2">Back</a>
-    <a hx-get="{% url "galleries:gallery_refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
+    <a class="btn btn-outline-danger me-2" hx-delete="{% url "galleries:delete" object.pk %}" 
+        hx-confirm="Are you sure you want to delete this gallery?" >Delete</a>
+    <a hx-get="{% url "galleries:refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
 </div>
 <div class="gallery">
     {% for file in object.data %}
