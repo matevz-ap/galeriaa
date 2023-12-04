@@ -25,5 +25,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("now/", lambda request: render(request, "now.html"), name="now"),
     path('accounts/', include('allauth.urls')),
-    path('galleries/', include('galleries.urls')),
+    path('galleries/', include(('galleries.urls', "galleries"), namespace="galleries")),
 ]

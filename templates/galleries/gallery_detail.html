@@ -1,6 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
 <div class="gallery">
+    {{ object.data }}
     {% for file in files %}
         <img src="https://drive.google.com/uc?id={{ file.id }}" class="gallery-image" 
             alt="" style="height: 200px">
     {% endfor %}
+    <a hx-get="{% url "galleries:gallery_refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
 </div>
+{% endblock content %}
