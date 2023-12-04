@@ -10,5 +10,5 @@
     <p>
         {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
     </p>
-    <a href="{% provider_login_url "google" next="/success/url/" %}" class="btn btn-light">Google</a>
+    <a href="{% provider_login_url "google" next="/galleries/new/" %}" class="btn btn-light">Google</a>
 {% endblock content %}

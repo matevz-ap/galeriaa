@@ -12,7 +12,7 @@
         {% blocktrans %}If you have not created an account yet, then please
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
     </p>
-    <a href="{% provider_login_url "google" next="/success/url/" %}" class="btn btn-light w-100">
+    <a href="{% provider_login_url "google" next="/galleries/" %}" class="btn btn-light w-100">
         <i class="bi bi-google"></i> Sign In with Google
     </a>
 {% endblock content %}
