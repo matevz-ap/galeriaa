@@ -21,6 +21,10 @@ class GalleryCreateView(CreateView):
         kwargs["user_id"] = self.request.user.id
         return kwargs
 
+    def form_valid(self, form):
+        services.update_gallery_data(form.instance)
+        return super().form_valid(form)
+
     def get_success_url(self) -> str:
         return reverse_lazy("galleries:detail", kwargs={"pk": self.object.pk})
 
