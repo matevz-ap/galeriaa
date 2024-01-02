@@ -4,11 +4,13 @@
     {% trans "Signup" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
+    <h3>
         {% trans "Sign Up" %}
-    {% endelement %}
-    <p>
+    </h3>
+    <a href="{% provider_login_url "google" next="/galleries/new/" %}" class="btn btn-light bg-white border w-100 mb-3">
+        <i class="bi bi-google"></i> Sign up with Google
+    </a>
+    <p class="mb-0">
         {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
     </p>
-    <a href="{% provider_login_url "google" next="/galleries/new/" %}" class="btn btn-light">Google</a>
 {% endblock content %}
