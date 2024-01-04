@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<nav class="navbar navbar-expand-lg border-bottom">
+<div class="square-with-angle position-absolute w-100" style="height: 50%"></div>
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-        <a class="navbar-brand text-primary" href="#" style="font-family: 'Pacifico', cursive;">Galeria</a>
+        <a class="navbar-brand text-white" href="#" style="font-family: 'Pacifico', cursive;">Galeria</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,10 +11,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#pricing">Pricing</a>
                 </li>
                 <li class="nav-item d-flex">
                     <a class="btn btn-primary rounded-pill ms-2 my-auto py-1" 
@@ -23,22 +21,27 @@
         </div>
     </div>
 </nav>
-<div class="container p-5">
-    <h1 class="mb-3 fw-bold">Embed google drive folders</h1>
-    <p class="text-secondary mb-5">You store your images on your drive. Why not also use it to display images on your website? 
-        Avoid using third party storage to display your images.
-    </p>
+<div class="container p-4 p-md-5">
+    <div class="text-center mt-5">
+        <h1 class="mb-3 fw-bold text-white" style="font-size: 2.5rem">Embed google drive folders</h1>
+        <p class="text-white mb-5">You already store your images on your drive. Why not also use it to display them on your website? 
+        </p>
+        <a class="btn btn-light bg-white my-auto mb-5 shadow-sm px-4 d-inline-flex align-items-center" href="/accounts/login/">
+            <img src="https://logodownload.org/wp-content/uploads/2020/04/google-drive-logo-0-1.png" height="30" class="me-2">
+            Connect your Drive
+        </a>
+    </div>
     <div class="row">
-        <div class="col-md-4">
-            <div class="border p-3 rounded-3">
+        <div class="col-md-4 mb-3">
+            <div class="border p-3 rounded-3 bg-white h-100 shadow-sm">
                 <img src="https://logodownload.org/wp-content/uploads/2020/04/google-drive-logo-0-1.png" height="80">
                 <h4>Connect Your Google Drive</h4>
                 <p>Sign in and effortlessly connect your Google Drive account to our platform.</p>
             </div>
         </div>
     
-        <div class="col-md-4">
-            <div class="border p-3 rounded-3">
+        <div class="col-md-4 mb-3">
+            <div class="border p-3 rounded-3 bg-white h-100 shadow-sm">
                 {% comment %} <img src="https://cdn.icon-icons.com/icons2/2963/PNG/512/macos_big_sur_folder_icon_186046.png" height="80"
                     class="p-2"> {% endcomment %}
                 <i class="bi bi-folder" style="font-size: 50px"></i>
@@ -47,19 +50,35 @@
             </div>
         </div>
     
-        <div class="col-md-4">
-            <div class="border p-3 rounded-3">
+        <div class="col-md-4 mb-3">
+            <div class="border p-3 rounded-3 bg-white h-100 shadow-sm">
 
             <i class="bi bi-image-fill" style="font-size: 50px"></i>
             <h4>Embed with Ease</h4>
-            <p>Our intuitive interface lets you embed images seamlessly. Simply select the images you want to display and let our platform take care of the rest.</p>
+            <p>Copy the code or share the link to display the images</p>
             </div>
         </div>
     </div>
     
-    <div>
+    <div class="text-center mb-5">
         Unlock the potential of your visual content with Galeria. Sign up now to experience a new level of convenience in managing and showcasing your images. Elevate your presentation with the power of seamless Google Drive integration.
     </div>
 
+    <section class="text-center">
+        <h1 id="pricing">Pricing</h1>
+        <p>First folder you share is free. Every additional one is 4$</p>
+    </section>
+
 </div>
 {% endblock content %}
+{% block css %}
+<style>
+      .square-with-angle {
+        z-index: -1;
+        background: #007bff;
+        color: white;
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        padding: 10rem 20%;
+      }
+</style>
+{% endblock css %}
