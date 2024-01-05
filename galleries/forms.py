@@ -8,7 +8,6 @@ from crispy_forms.layout import Layout
 from crispy_forms.layout import Div
 from crispy_forms.layout import HTML
 from . import models
-from . import utils
 
 
 class GalleryForm(forms.ModelForm):
