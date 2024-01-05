@@ -7,3 +7,4 @@ class Gallery(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="galleries")
     folder = models.CharField(default="", max_length=33)
     data = models.JSONField(default=dict)
+    name = models.CharField(default="", max_length=33)
