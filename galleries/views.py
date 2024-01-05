@@ -10,7 +10,7 @@ from django.views.decorators.http import require_http_methods
 from . import models
 from . import services
 from . import forms
-
+from . import utils
 
 class GalleryCreateView(CreateView):
     model = models.Gallery
@@ -60,3 +60,9 @@ def delete_gallery(request, pk):
     gallery = models.Gallery.objects.get(pk=pk)
     gallery.delete()
     return HttpResponse("OK", headers={"HX-Redirect": reverse_lazy("galleries:list")})
+
+
+@require_http_methods(["GET"])
+def get_drive_folders(request):
+    folders = services.get_drive_folders(request.user.id)
+    return HttpResponse(utils.folders_to_choices(folders))
