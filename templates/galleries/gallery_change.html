@@ -23,7 +23,10 @@
                 </div>
                 Copy code
             </div>
-            Share your gallery
+            <div class="d-flex justify-content-between mb-1">
+                <span>Share your gallery</span>
+                <a href="{% url "galleries:detail" object.pk %}" target="_blank">View</a>
+            </div>
             <div class="mb-3">
                 <input class="form-control bg-light" value={{ absolute_url }} readonly>
             </div>
