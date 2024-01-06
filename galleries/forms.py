@@ -26,7 +26,7 @@ class GalleryForm(forms.ModelForm):
         self.helper.layout = Layout(
             Hidden("user", user_id),
             Field("name", placeholder="Name your gallery"),
-            Field("folder", placeholder="Select a folder"),
+            Field("folder", placeholder="Select a folder", style="max-width: 450px"),
             Div(
                 HTML(
                     '<a href="{% url "galleries:list" %}" class="btn btn-light shadow-sm bg-white flex-grow-1">Close</a>'

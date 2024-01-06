@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path("", login_required(views.GalleryListView.as_view()), name="list"),
     path("new/", login_required(views.GalleryCreateView.as_view()), name="create"),
+    path("folders", views.get_drive_folders, name="drive_folders"),
     path(
         "<pk>/change", login_required(views.GalleryChangeView.as_view()), name="change"
     ),
@@ -13,5 +14,4 @@ urlpatterns = [
     path("<pk>", views.GalleryDetailView.as_view(), name="detail"),
     path("<pk>/refresh/", login_required(views.refresh_gallery), name="refresh"),
     path("<pk>/json/", views.gallery_api, name="gallery_api"),
-    path("folders", views.get_drive_folders, name="drive_folders"),
 ]

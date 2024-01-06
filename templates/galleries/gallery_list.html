@@ -2,9 +2,7 @@
 {% block content-main %}
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Galleries</h1>
-    <a href="{% url 'galleries:create' %}" class="btn btn-primary">
-        Create <i class="bi bi-plus-circle ms-2"></i>
-    </a>
+    <a href="{% url 'galleries:create' %}" class="btn btn-primary">New gallery</a>
 </div>
 {% if object_list %}
 <div>
