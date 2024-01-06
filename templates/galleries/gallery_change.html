@@ -9,20 +9,12 @@
 </div>
 <div class="row h-100">
     <div class="col-md-4 h-100 flex-grow-1 mb-3">
-        <div class="border shadow-sm rounded-3 bg-white p-4 h-100">
-            <h6 class="text-body-secondary">Name</h6>
+        <div class="border shadow-sm rounded-3 bg-white p-4 h-100 mb-3">
             <form method="post" id="form" class="mb-3">
                 {% csrf_token %}
+                <label>Name</label>
                 {{ form.name }}
             </form>
-            <div class="bg-light rounded-3 border px-3 py-2 mb-3">
-                <div class="d-flex justify-content-end">
-                    <a href="#">
-                        <i class="bi bi-copy"></i>
-                    </a>
-                </div>
-                Copy code
-            </div>
             <div class="d-flex justify-content-between mb-1">
                 <span>Share your gallery</span>
                 <a href="{% url "galleries:detail" object.pk %}" target="_blank">View</a>
@@ -33,6 +25,27 @@
             <div class="d-flex justify-content-between">
                 <a hx-get="{% url "galleries:refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
                 <button class="btn btn-primary shadow-sm" form="form">Save</button>
+            </div>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed border rounded-3 shadow-sm py-2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Code
+                </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body border">
+                        <div class="bg-light rounded-3 border px-3 py-2">
+                            <div class="d-flex justify-content-end">
+                                <a href="#">
+                                    <i class="bi bi-copy"></i>
+                                </a>
+                            </div>
+                            Copy code
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

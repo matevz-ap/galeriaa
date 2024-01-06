@@ -1,20 +1,17 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container">
-        <a class="navbar-brand text-primary" href="#" style="font-family: 'Pacifico', cursive;">Galeria</a>
+        <a class="navbar-brand text-primary" href="{% url "galleries:list" %}" style="font-family: 'Pacifico', cursive;">Galeria</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url "galleries:list" %}">My Galleries</a>
-                </li>
                 {% comment %} <li class="nav-item">
                     <a class="nav-link" href="#">Settings</a>
                 </li> {% endcomment %}
                 <li class="nav-item">
-                    <a class="nav-link icon-link" href="/accounts/logout/"><i class="bi bi-box-arrow-right"></i></a>
+                    <a href="/accounts/logout/">Sign out <i class="bi bi-box-arrow-right ms-1"></i></a>
                 </li>
             </ul>
         </div>
