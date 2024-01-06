@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.views.decorators.http import require_http_methods
 from django.views.generic import CreateView
 from django.views.generic import ListView
+from django.views.generic import UpdateView
 from django.views.generic.detail import DetailView
 
 from . import forms
@@ -32,8 +33,9 @@ class GalleryCreateView(CreateView):
         return reverse_lazy("galleries:detail", kwargs={"pk": self.object.pk})
 
 
-class GalleryChangeView(DetailView):
+class GalleryChangeView(UpdateView):
     model = models.Gallery
+    form_class = forms.GalleryChangeForm
     template_name = "galleries/gallery_change.html"
 
     def get_context_data(self, **kwargs):
@@ -42,6 +44,9 @@ class GalleryChangeView(DetailView):
             reverse_lazy("galleries:detail", args=(self.object.pk,))
         )
         return context
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("galleries:change", kwargs={"pk": self.object.pk})
 
 
 class GalleryListView(ListView):
