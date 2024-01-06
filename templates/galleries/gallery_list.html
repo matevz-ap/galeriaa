@@ -7,9 +7,9 @@
 {% if object_list %}
 <div>
     {% for gallery in object_list %}
-    <div class="row mb-3 p-3 border rounded-3 align-items-center">
+    <div class="row mb-3 p-3 border rounded-3 align-items-center bg-white shadow-sm">
         <div class="col">{{ gallery.name }}</div>
-        <div class="col-2 text-end">
+        <div class="col-3 text-end">
             {{ gallery.data|length }} images
         </div>
         <div class="col-2 text-end">
