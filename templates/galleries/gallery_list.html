@@ -15,7 +15,7 @@
             {{ gallery.data|length }} images
         </div>
         <div class="col-2 text-end">
-            <a href="{% url 'galleries:detail' gallery.pk %}" class="btn btn-outline-primary">View</a>
+            <a href="{% url 'galleries:change' gallery.pk %}" class="btn btn-outline-primary">View</a>
         </div>
     </div>
     {% endfor %}

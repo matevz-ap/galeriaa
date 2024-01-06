@@ -1,16 +1,19 @@
 from typing import Any
-from django.db.models.query import QuerySet
-from django.views.generic.detail import DetailView
-from django.views.generic import ListView
-from django.urls import reverse_lazy
-from django.http import HttpResponse, JsonResponse
-from django.views.generic import CreateView
-from django.views.decorators.http import require_http_methods
 
+from django.db.models.query import QuerySet
+from django.http import HttpResponse
+from django.http import JsonResponse
+from django.urls import reverse_lazy
+from django.views.decorators.http import require_http_methods
+from django.views.generic import CreateView
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+
+from . import forms
 from . import models
 from . import services
-from . import forms
 from . import utils
+
 
 class GalleryCreateView(CreateView):
     model = models.Gallery
@@ -29,11 +32,14 @@ class GalleryCreateView(CreateView):
         return reverse_lazy("galleries:detail", kwargs={"pk": self.object.pk})
 
 
-class GalleryView(DetailView):
+class GalleryChangeView(DetailView):
     model = models.Gallery
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["absolute_url"] = self.request.build_absolute_uri(
+            reverse_lazy("galleries:detail", args=(self.object.pk,))
+        )
         return context
 
 
@@ -42,6 +48,14 @@ class GalleryListView(ListView):
 
     def get_queryset(self) -> QuerySet[Any]:
         return super().get_queryset().filter(user=self.request.user)
+
+
+class GalleryDetailView(DetailView):
+    model = models.Gallery
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 def gallery_api(request, pk):

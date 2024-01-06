@@ -17,13 +17,17 @@
             <p>{{ object.description }}</p>
             <p>Created: {{ object.created }}</p>
             <p>Updated: {{ object.updated }}</p>
-            <div class="bg-light rounded-3 border px-3 py-2">
+            <div class="bg-light rounded-3 border px-3 py-2 mb-3">
                 <div class="d-flex justify-content-end">
                     <a href="#">
                         <i class="bi bi-copy"></i>
                     </a>
                 </div>
                 Copy code
+            </div>
+            Share your gallery
+            <div class="">
+                <input class="form-control bg-light" value={{ absolute_url }} readonly>
             </div>
         </div>
     </div>
