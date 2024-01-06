@@ -12,7 +12,8 @@ from . import models
 
 class GalleryForm(forms.ModelForm):
     folder = forms.CharField(
-        widget=forms.Select(attrs={"id": "folder-autocomplete", "autocomplete": "off"})
+        widget=forms.Select(attrs={"id": "folder-autocomplete", "autocomplete": "off"}),
+        help_text="Select a folder from your Google Drive",
     )
 
     class Meta:

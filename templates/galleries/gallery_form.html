@@ -13,7 +13,6 @@
         </div>
         <div class="border rounded-4 p-4 shadow-sm bg-white mb-3">
             <h2>New Gallery</h2>
-            <p>Select a folder from yout google drive to create a new gallery</p>
             {% crispy form%}
             <div>
                 <a hx-get="{% url 'galleries:drive_folders' %}" hx-trigger="load" hx-target="#folder-autocomplete" 
