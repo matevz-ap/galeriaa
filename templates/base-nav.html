@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 {% include "navbar.html" %}
-<div class="container p-5">
-    {% block content-main %}
-    {% endblock content-main %}
+<div class="bg-light">
+    <div class="container p-5">
+        {% block content-main %}
+        {% endblock content-main %}
+    </div>
 </div>
 {% endblock content %}
 {% block js %}

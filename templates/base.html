@@ -33,7 +33,7 @@
     {% endblock css %}
 </head>
 <body>
-<main class="vh-100 bg-light z-n1" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+<main class="vh-100 z-n1" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {% block content %}
     {% endblock content %}
 </main>

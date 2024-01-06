@@ -34,6 +34,7 @@ class GalleryCreateView(CreateView):
 
 class GalleryChangeView(DetailView):
     model = models.Gallery
+    template_name = "galleries/gallery_change.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

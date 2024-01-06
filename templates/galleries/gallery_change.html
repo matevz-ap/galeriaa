@@ -1,0 +1,46 @@
+{% extends "base-nav.html" %}
+{% block css %}
+{% endblock css %}
+{% block content-main %}
+<div class="d-flex align-items-center mb-3">
+    <h2 class="mb-0">Gallery</h2>
+    <a href="{% url "galleries:list" %}" class="btn btn-outline-secondary ms-auto me-2">Back</a>
+    <a class="btn btn-outline-danger me-2" hx-delete="{% url "galleries:delete" object.pk %}" 
+        hx-confirm="Are you sure you want to delete this gallery?" >Delete</a>
+    <a hx-get="{% url "galleries:refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
+</div>
+<div class="row h-100">
+    <div class="col-md-4 h-100 flex-grow-1">
+        <div class="border shadow-sm rounded-3 bg-white p-4 h-100">
+            <h3 class="mb-0">{{ object.name }}</h3>
+            <h6 class="text-body-secondary">Name</h6>
+            <p>{{ object.description }}</p>
+            <p>Created: {{ object.created }}</p>
+            <p>Updated: {{ object.updated }}</p>
+            <div class="bg-light rounded-3 border px-3 py-2 mb-3">
+                <div class="d-flex justify-content-end">
+                    <a href="#">
+                        <i class="bi bi-copy"></i>
+                    </a>
+                </div>
+                Copy code
+            </div>
+            Share your gallery
+            <div class="">
+                <input class="form-control bg-light" value={{ absolute_url }} readonly>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="border shadow-sm bg-white rounded-3 p-4">
+            <div class="gallery">
+                {% for file in object.data %}
+                    <img src="https://drive.google.com/uc?id={{ file.id }}" class="gallery-image" 
+                        alt="" style="height: 200px">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content-main %}
