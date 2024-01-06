@@ -30,7 +30,7 @@ class GalleryCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self) -> str:
-        return reverse_lazy("galleries:detail", kwargs={"pk": self.object.pk})
+        return reverse_lazy("galleries:change", kwargs={"pk": self.object.pk})
 
 
 class GalleryChangeView(UpdateView):

@@ -21,11 +21,11 @@ class GalleryForm(forms.ModelForm):
         fields = ["user", "folder", "name"]
 
     def __init__(self, *args, **kwargs):
-        user_id = kwargs.pop("user_id")
+        self.user_id = kwargs.pop("user_id")
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
-            Hidden("user", user_id),
+            Hidden("user", self.user_id),
             Field("name", placeholder="Name your gallery"),
             Field("folder", placeholder="Select a folder", style="max-width: 450px"),
             Div(
@@ -36,6 +36,12 @@ class GalleryForm(forms.ModelForm):
                 css_class="d-flex justify-content-end gap-3",
             ),
         )
+
+    def is_valid(self) -> bool:
+        if models.Gallery.objects.filter(user_id=self.user_id).count() > 0:
+            self.add_error(None, "You have reached the maximum number of galleries")
+            return False
+        return super().is_valid()
 
 
 class GalleryChangeForm(forms.ModelForm):
