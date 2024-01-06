@@ -30,12 +30,14 @@
         <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                <button class="accordion-button collapsed border rounded-3 shadow-sm py-2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <button class="accordion-button collapsed border rounded-3 shadow-sm py-2" type="button" 
+                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+                    style="--bs-accordion-button-active-bg: var(--bs-bg-white)">
                     Code
                 </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body border">
+                    <div class="accordion-body border rounded-bottom-3 border-top-0 shadow-sm">
                         <div class="bg-light rounded-3 border px-3 py-2">
                             <div class="d-flex justify-content-end">
                                 <a href="#">
@@ -60,4 +62,11 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static "css/gallery.css" %}">
+<style>
+    .accordion-button:not(.collapsed) {
+        background-color: var(--bs-bg-white) !important;
+        border-radius: 0.25rem 0.25rem 0 0 !important;
+        box-shadow: none !important;
+    }
+</style>
 {% endblock css %}
