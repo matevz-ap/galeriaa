@@ -1,57 +1,15 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <div class="main h-100">
     <div class="container p-5">
-        <div class="gallery">
-            {% comment %} {% for file in object.data %}
-                <img src="https://drive.google.com/uc?id={{ file.id }}" class="gallery-image" 
-                    alt="" style="height: 200px">
-            {% endfor %} {% endcomment %}
-        </div>
         <h1 class="text-center mb-3">{{ object.name }}</h1>
-        <div class="gallery">
-            <div class="gallery-col">
-                <img src="https://th.bing.com/th/id/OIP.7lsix7gsRqbd6NYo3jcK5wHaFj?rs=1&pid=ImgDetMain" alt="">
-                <img src="https://th.bing.com/th/id/OIP.wwxK07x0Umfnh0l-nrjxjgHaDg?rs=1&pid=ImgDetMain" alt="">
-                <img src="https://wallpaperaccess.com/full/1356294.jpg" alt="">
-                <img src="https://th.bing.com/th/id/OIP.Wx87iOLs3nTO7yl71jf2LgHaEo?rs=1&pid=ImgDetMain" alt="">
-            </div>
-            <div class="gallery-col">
-                <img src="https://th.bing.com/th/id/R.f950163c66f326e9a7383412134ed406?rik=r6J4dBTIT31YNA&riu=http%3a%2f%2f1.bp.blogspot.com%2f-SyT1JjFMYKQ%2fUfvqq5QIEfI%2fAAAAAAAABJ0%2fk3mPEZGw4mI%2fs1600%2fverticalgarden.jpg&ehk=frV%2fsJ%2b17p7SikDVVZFBNibSyVA5x0eZVSV7Gk5nOus%3d&risl=&pid=ImgRaw&r=0" alt="">
-                <img src="https://th.bing.com/th/id/R.c216227768ca37ef1cdc1521b48a124e?rik=FcYlZGBOI%2bk0OA&pid=ImgRaw&r=0" alt="">
-                <img src="https://th.bing.com/th/id/OIP.UUG7VD-bI1j0bdGRyIUTlgHaEK?rs=1&pid=ImgDetMain" alt="">
-            </div>
-            <div class="gallery-col">
-                <img src="https://2.bp.blogspot.com/-fVzhpbPS798/Uy2cYPJ1uLI/AAAAAAAA7Mc/qvZJGZunZHY/s1600/widescreen+wallpaper+nature.jpg" alt="">
-                <img src="https://th.bing.com/th/id/R.201e442823034f2b946dc72b4bd3c8e0?rik=h4Z0%2br8s5d4f8g&pid=ImgRaw&r=0" alt="">
-                <img src="https://1.bp.blogspot.com/-GWc9M2xumgA/TcIcSfwT2BI/AAAAAAAACsE/JSftitL2eN8/s1600/nature_18_1024.jpg" alt="">
-            </div>
-        </div>
+        {% include "galleries/components/gallery.html" %}
     </div>
 </div>
 
 {% endblock content %}
 
 {% block css %}
-<style>
-    .main {
-        background: linear-gradient(0deg, white 0%, #c3c3c3 100%);
-    }
-    .gallery {
-        display: flex;
-        gap: 10px;
-    }
-
-    .gallery-col {
-        display: flex;
-        flex-direction: column;
-        width: 33%;
-        gap: 10px;
-    }
-    
-    .gallery img {
-        flex-shrink: 0;
-        border-radius: 6px;
-    }
-</style>
+<link rel="stylesheet" href="{% static "css/gallery.css" %}">
 {% endblock css %}
