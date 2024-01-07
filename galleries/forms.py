@@ -38,7 +38,7 @@ class GalleryForm(forms.ModelForm):
         )
 
     def is_valid(self) -> bool:
-        if models.Gallery.objects.filter(user_id=self.user_id).count() > 0:
+        if models.Gallery.objects.filter(user_id=self.user_id).count() > 20:
             self.add_error(None, "You have reached the maximum number of galleries")
             return False
         return super().is_valid()
