@@ -56,10 +56,8 @@ def get_files_from_folder(user_id: int, folder_id: int):
 
 def update_gallery_data(gallery):
     files = get_files_from_folder(gallery.user_id, gallery.folder)
-    # for file in files:
-    #     if file["mimeType"] == "application/vnd.google-apps.folder":
-    #         f = get_files_from_folder(gallery.user_id, file["id"])
-    #         file["images"] = f
+    # for i, file in enumerate(files):
+    #     file["order"] = i
     gallery.data = files
     gallery.save(update_fields=("data",))
 

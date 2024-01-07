@@ -2,7 +2,10 @@
     {% for col in object.spaced %}
         <div class="gellery-col">
             {% for image in col %}
-            <img src="https://drive.google.com/uc?id={{ image.id }}" alt="">
+            <div class="image">
+                <img src="https://drive.google.com/uc?id={{ image.id }}" alt="">
+                <input type="hidden" name="order" value="{{ image.id }}:{{ image.order}}">
+            </div>
             {% endfor %}
         </div>
     {% endfor %}

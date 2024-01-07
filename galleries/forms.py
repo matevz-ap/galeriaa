@@ -10,6 +10,11 @@ from django import forms
 from . import models
 
 
+class MyMultipleChoiceField(forms.MultipleChoiceField):
+    def validate(self, value):
+        pass
+
+
 class GalleryForm(forms.ModelForm):
     folder = forms.CharField(
         widget=forms.Select(attrs={"id": "folder-autocomplete", "autocomplete": "off"}),
@@ -45,6 +50,8 @@ class GalleryForm(forms.ModelForm):
 
 
 class GalleryChangeForm(forms.ModelForm):
+    order = MyMultipleChoiceField(required=False)
+
     class Meta:
         model = models.Gallery
         fields = ["name"]

@@ -45,6 +45,11 @@ class GalleryChangeView(UpdateView):
         )
         return context
 
+    def form_valid(self, form):
+        order = form.cleaned_data["order"]
+        form.instance.data = utils.order_images(form.instance.data, order)
+        return super().form_valid(form)
+
     def get_success_url(self) -> str:
         return reverse_lazy("galleries:change", kwargs={"pk": self.object.pk})
 

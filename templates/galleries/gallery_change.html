@@ -7,58 +7,71 @@
     <a class="btn btn-outline-danger me-2 ms-auto" hx-delete="{% url "galleries:delete" object.pk %}" 
         hx-confirm="Are you sure you want to delete this gallery?" >Delete</a>
 </div>
-<div class="row h-100">
-    <div class="col-md-4 h-100 flex-grow-1 mb-3">
-        <div class="border shadow-sm rounded-3 bg-white p-4 h-100 mb-3">
-            <form method="post" id="form" class="mb-3">
-                {% csrf_token %}
+<form method="post" id="form" class="mb-3">
+    {% csrf_token %}
+    {{ form.errors }}
+    <div class="row h-100">
+        <div class="col-md-4 h-100 flex-grow-1 mb-3">
+            <div class="border shadow-sm rounded-3 bg-white p-4 h-100 mb-3">
                 <label>Name</label>
                 {{ form.name }}
-            </form>
-            <div class="d-flex justify-content-between mb-1">
-                <span>Share your gallery</span>
-                <a href="{% url "galleries:detail" object.pk %}" target="_blank">View</a>
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Share your gallery</span>
+                    <a href="{% url "galleries:detail" object.pk %}" target="_blank">View</a>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control bg-light" value={{ absolute_url }} readonly>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a hx-get="{% url "galleries:refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
+                    <button class="btn btn-primary shadow-sm" form="form">Save</button>
+                </div>
             </div>
-            <div class="mb-3">
-                <input class="form-control bg-light" value={{ absolute_url }} readonly>
-            </div>
-            <div class="d-flex justify-content-between">
-                <a hx-get="{% url "galleries:refresh" object.pk %}" class="btn btn-outline-primary">Refresh</a>
-                <button class="btn btn-primary shadow-sm" form="form">Save</button>
-            </div>
-        </div>
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                <button class="accordion-button collapsed border rounded-3 shadow-sm py-2" type="button" 
-                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
-                    style="--bs-accordion-button-active-bg: var(--bs-bg-white)">
-                    Code
-                </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body border rounded-bottom-3 border-top-0 shadow-sm">
-                        <div class="bg-light rounded-3 border px-3 py-2">
-                            <div class="d-flex justify-content-end">
-                                <a href="#">
-                                    <i class="bi bi-copy"></i>
-                                </a>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button collapsed border rounded-3 shadow-sm py-2" type="button" 
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+                        style="--bs-accordion-button-active-bg: var(--bs-bg-white)">
+                        Code
+                    </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body border rounded-bottom-3 border-top-0 shadow-sm">
+                            <div class="bg-light rounded-3 border px-3 py-2">
+                                <div class="d-flex justify-content-end">
+                                    <a href="#">
+                                        <i class="bi bi-copy"></i>
+                                    </a>
+                                </div>
+                                Copy code
                             </div>
-                            Copy code
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-8">
-        <div class="border shadow-sm bg-white rounded-3 p-4">
-            {% include "galleries/components/gallery.html" %}
+        <div class="col-md-8">
+            <div class="border shadow-sm bg-white rounded-3 p-4">
+                {% include "galleries/components/gallery.html" %}
+            </div>
         </div>
     </div>
-</div>
+</form>
 
 {% endblock content-main %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.js"></script>
+<script>
+    const swappable = new Draggable.Swappable(document.querySelectorAll('.gallery'), {
+      draggable: '.image',
+      mirror: {
+        constrainDimensions: true,
+      },
+    });
+</script>
+{% endblock js %}
 
 {% block css %}
 <link rel="stylesheet" href="{% static "css/gallery.css" %}">
@@ -67,6 +80,10 @@
         background-color: var(--bs-bg-white) !important;
         border-radius: 0.25rem 0.25rem 0 0 !important;
         box-shadow: none !important;
+    }
+
+    .gallery img {
+        cursor: pointer;
     }
 </style>
 {% endblock css %}

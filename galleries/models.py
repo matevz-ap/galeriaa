@@ -15,5 +15,6 @@ class Gallery(models.Model):
     def spaced(self, cols=3) -> list[list[str]]:
         s: list[list[str]] = [[], [], []]
         for i, photo in enumerate(self.data):
+            photo["order"] = i
             s[i % cols].append(photo)
         return s
