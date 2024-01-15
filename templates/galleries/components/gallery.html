@@ -3,8 +3,8 @@
         <div class="gellery-col">
             {% for image in col %}
             <div class="image">
-                <img src="https://www.googledrive.com/host/{{ image.id }}" alt="">
                 {% comment %} <img src="https://drive.google.com/uc?id=1XTTHYMHCtLqPi23oQbsaT5JMeiSEXn-k" alt=""> {% endcomment %}
+                <img src="https://drive.google.com/thumbnail?id={{ image.id }}" alt="">
                 {% comment %} <img src="https://drive.usercontent.google.com/download?id=1ptJ36HqoCS05pL56LedGLCX_zTYNQThI&authuser=0" alt=""> {% endcomment %}
                 {% comment %} <img src="https://drive.usercontent.google.com/download?id={{ image.id }}&authuser=0" alt=""> {% endcomment %}
                 {% comment %} <iframe src="https://drive.google.com/file/d/{{ image.id }}/preview" width="640" height="480" allow="autoplay"></iframe> {% endcomment %}
