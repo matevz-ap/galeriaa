@@ -3,12 +3,10 @@ def folders_to_choices(folders: list[dict[str, str]]) -> str:
 
 
 def order_images(data: list[dict[str, str]], order: list[str]) -> list[str]:
-    images: list[list[str]] = [[], [], []]
-    for i, photo in enumerate(order):
-        images[i % 3].append(photo)
-    img = []
-    for col in images:
-        for c in col:
-            img.append(c)
-    print(img)
-    return sorted(data, key=lambda x: img.index(x["id"]))
+    images: list[str] = []
+    for i in range(3):
+        for j in range(4):
+            inx = i * 4 + j
+            att = (inx % 4) * (i + 1) + i
+            images.insert(att, order[inx])
+    return sorted(data, key=lambda x: images.index(x["id"]))
