@@ -35,9 +35,9 @@ class GalleryForm(forms.ModelForm):
             Field("folder", placeholder="Select a folder", style="max-width: 450px"),
             Div(
                 HTML(
-                    '<a href="{% url "galleries:list" %}" class="btn btn-light shadow-sm bg-white flex-grow-1">Close</a>'
+                    '<a href="{% url "galleries:list" %}" class="btn btn-light shadow-sm bg-white border flex-grow-1">Close</a>'
                 ),
-                Submit("submit", "Create", css_class="flex-grow-1 shadow-sm"),
+                Submit("submit", "Create", css_class="flex-grow-1 shadow"),
                 css_class="d-flex justify-content-end gap-3",
             ),
         )

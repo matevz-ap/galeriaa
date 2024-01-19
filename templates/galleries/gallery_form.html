@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block title %}New Gallery{% endblock %}
 {% block content %}
-<div class="container d-flex h-100 flex-column align-items-center">
+<div class="container d-flex h-100 flex-column align-items-center bg-light">
     <div class="d-flex flex-column h-100 justify-content-center" style="max-width: 550px; min-width: 400px">
         <div class="alert alert-primary htmx-indicator p-2" id="loading" role="alert">
             <i class="bi bi-info-circle me-1"></i>
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="border rounded-4 p-4 shadow-sm bg-white mb-3">
-            <h2>New Gallery</h2>
+            <h3>New Gallery</h3>
             {% crispy form%}
             <div>
                 <a hx-get="{% url 'galleries:drive_folders' %}" hx-trigger="load" hx-target="#folder-autocomplete" 
