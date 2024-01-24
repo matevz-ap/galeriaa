@@ -56,3 +56,5 @@ SECRET_KEY = env.str("SECRET_KEY")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#sessions
 
 SESSION_COOKIE_SECURE = env.bool("SESSION_COOKIE_SECURE", default=True)
+
+STRIPE_LIVE_MODE = False

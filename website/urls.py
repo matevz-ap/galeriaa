@@ -17,13 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.shortcuts import render
-from django.urls import path
 from django.urls import include
+from django.urls import path
 
 urlpatterns = [
     path("", lambda request: render(request, "welcome.html"), name="welcome"),
     path("admin/", admin.site.urls),
     path("now/", lambda request: render(request, "now.html"), name="now"),
-    path('accounts/', include('allauth.urls')),
-    path('galleries/', include(('galleries.urls', "galleries"), namespace="galleries")),
+    path("accounts/", include("allauth.urls")),
+    path("galleries/", include(("galleries.urls", "galleries"), namespace="galleries")),
+    path("stripe/", include("djstripe.urls", namespace="djstripe")),
 ]

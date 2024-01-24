@@ -37,3 +37,5 @@ DEBUG = env.bool("DEBUG", default=True)
 # https://docs.djangoproject.com/en/4.2/ref/settings/#security
 
 SECRET_KEY = env.str("SECRET_KEY", default="krnv9x3xcr3e573cp1gr3437w6")
+
+STRIPE_LIVE_MODE = False

@@ -7,3 +7,4 @@ django-allauth
 google-api-python-client
 django-crispy-forms
 crispy-bootstrap5
+dj-stripe

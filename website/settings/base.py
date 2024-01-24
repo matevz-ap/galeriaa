@@ -10,8 +10,9 @@ For the full list of experimental and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import environ
 from pathlib import Path
+
+import environ
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -61,6 +62,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "crispy_forms",
     "crispy_bootstrap5",
+    "djstripe",
     # Apps
     "galleries.apps.GalleriesConfig",
 ]
@@ -138,25 +140,25 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-ACCOUNT_SIGNUP_REDIRECT_URL = '/galleries/new/'
-LOGIN_REDIRECT_URL = '/galleries/'
+ACCOUNT_SIGNUP_REDIRECT_URL = "/galleries/new/"
+LOGIN_REDIRECT_URL = "/galleries/"
 SOCIALACCOUNT_STORE_TOKENS = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-            'openid',
-            'https://www.googleapis.com/auth/drive.readonly'
+    "google": {
+        "SCOPE": [
+            "profile",
+            "email",
+            "openid",
+            "https://www.googleapis.com/auth/drive.readonly",
         ],
-        'AUTH_PARAMS': {
-            'access_type': 'offline',
+        "AUTH_PARAMS": {
+            "access_type": "offline",
         },
     }
 }
@@ -168,3 +170,10 @@ ROOT_URLCONF = "website.urls"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+STRIPE_LIVE_SECRET_KEY = env.str("STRIPE_LIVE_SECRET_KEY", "<your secret key>")
+STRIPE_TEST_SECRET_KEY = env.str("STRIPE_TEST_SECRET_KEY", "<your secret key>")
+DJSTRIPE_WEBHOOK_SECRET = "whsec_m3KzRi0Wv3yhh4eCyOmLgP4SuCyjopd6"
+DJSTRIPE_USE_NATIVE_JSONFIELD = True
+DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
